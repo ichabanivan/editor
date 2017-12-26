@@ -40,8 +40,6 @@ function Options(id) {
   this.italic = document.getElementById('italic'),
   this.underline = document.getElementById('underline'),
   this.heading = document.getElementById('heading');
-
-  this.get = document.getElementById('get');
 }
 
 Options.prototype = Object.create(Editor.prototype);
