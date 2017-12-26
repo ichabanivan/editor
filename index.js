@@ -10,6 +10,8 @@ function Editor() {
   this.clickEvents();
   this.changeEvents();
   this.shiftEnter();
+  this.text = document.getElementById('text')
+  this.formatText = document.getElementById('formatText')
 }
 
 Editor.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
@@ -33,8 +35,12 @@ Editor.prototype.clickEvents = function () {
       that.setCommand(command, '<' + elem + '>');
     } else if (e.target.classList.contains('btn')) {
       that.setCommand(command)
-    } 
-  })
+    } else if (e.target.classList.contains('getData')) {
+      console.log(1)
+      that.text.innerHTML = that.getText();
+      that.formatText.innerHTML = that.getHtml();
+    }
+   })
 }
 
 Editor.prototype.changeEvents = function () {
@@ -60,7 +66,8 @@ Editor.prototype.changeEvents = function () {
     var command = e.target.dataset.command;
     var elem = e.target.dataset.elem;
 
-    if (e.target.classList.contains('select')) {
+    if (e.target.classList.contains('select')) { // FontSize
+      console.log(command, e.target.value)
       that.setCommand(command, e.target.value);
     } else if (e.target.classList.contains('input')) {
       that.setCommand(command, e.target.value)
