@@ -7,14 +7,6 @@ body {
     box-sizing: border-box
 }
 
-font[size='1'] {
-    font-size: 12px;
-}
-
-font[size='2'] {
-    font-size: 16px;
-}
-
 #bold {
     font-weight: bold;
 }
@@ -25,11 +17,6 @@ font[size='2'] {
 
 #underline {
     text-decoration: underline;
-}
-
-p {
-    text-indent: 20px;
-    margin: 0;
 }
   
 .editor {
@@ -64,12 +51,6 @@ p {
     margin: 20px auto;
 }
 
-.row {
-    width: 80%;
-    margin: 20px auto;
-    display: flex;
-}
-
 #get {
     display: block;
     margin: 5px;
@@ -77,5 +58,11 @@ p {
 }
 
 #save {
-    margin: 5px;
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+}
+
+#save a {
+    margin-left: auto;
 }

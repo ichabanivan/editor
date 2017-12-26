@@ -47,7 +47,6 @@ function Options(id) {
 Options.prototype = Object.create(Editor.prototype);
 Options.prototype.constructor = Options;
 
-
 Options.prototype.reset = function () {
   this.heading.value = 0;
 }
@@ -57,13 +56,8 @@ Options.prototype.clickEvents = function () {
 
   document.addEventListener('click', function (e) {
     var command = e.target.dataset.command;
-    var elem = e.target.dataset.elem;
     if (e.target.classList.contains('btn')) {
       that.setCommand(command)
-    } else if (e.target.classList.contains('getData')) {
-      console.log(that.textField)
-      that.textField.innerText = that.getHtml();
-      that.result();
     }
   })
 }
@@ -73,11 +67,9 @@ Options.prototype.changeEvents = function () {
 
   document.addEventListener('change', function (e) {
     var command = e.target.dataset.command;
-    var elem = e.target.dataset.elem;
 
     if (e.target.classList.contains('select')) {
       that.setCommand(command, e.target.value);
-      console.log(e.target.value)
     }
 
     that.reset();
@@ -97,7 +89,7 @@ Text.prototype.enter = function () {
   var that = this;
 
   document.addEventListener('keydown', function (e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13) {      
       that.setCommand('formatBlock', '<p>');
     }
   })
@@ -107,13 +99,10 @@ Text.prototype.input = function () {
   var that = this;
 
   document.addEventListener('input', function (e) {
-    console.log(that.html)
-    // that.
     that.result();
     that.download();
   })
 }
-
 
 editor = new Editor('editor')
 option = new Options('editor')
