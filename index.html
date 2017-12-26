@@ -10,22 +10,22 @@
 <body>
     <div class="options">
         <!-- <button id="p" class="btn">p</button> -->
-        <button id="bold" class="btn">Bold</button>
-        <button id="italic" class="btn">Italic</button>
-        <button id="underline" class="btn">Underline</button>
-        <button data-elem="h1" class="heading btn">h1</button>
-        <button data-elem="h2" class="heading btn">h2</button>
-        <button data-elem="h3" class="heading btn">h3</button>
-        <button data-elem="h4" class="heading btn">h4</button>
-        <button data-elem="h5" class="heading btn">h5</button>
-        <button data-elem="h6" class="heading btn">h6</button>
-        <select id="fontSize" class="btn">
+        <button data-command="bold" id="bold" class="btn">Bold</button>
+        <button data-command="italic" id="italic" class="btn">Italic</button>
+        <button data-command="underline" id="underline" class="btn">Underline</button>
+        <button data-command="formatBlock" data-elem="h1" class="heading btn">h1</button>
+        <button data-command="formatBlock" data-elem="h2" class="heading btn">h2</button>
+        <button data-command="formatBlock" data-elem="h3" class="heading btn">h3</button>
+        <button data-command="formatBlock" data-elem="h4" class="heading btn">h4</button>
+        <button data-command="formatBlock" data-elem="h5" class="heading btn">h5</button>
+        <button data-command="formatBlock" data-elem="h6" class="heading btn">h6</button>
+        <select data-command="fontSize" id="fontSize" class="select">
             <option value="0">Choose font-size</option>
             <option value="1">12px</option>
             <option value="2">16px</option>
-            <option value="3">20px</option>
+            <option value="3">24px</option>
         </select>
-        <input type="color" name="color" id="color" value="#cccccc">
+        <input data-command="foreColor" type="color" name="color" id="color" class="input" value="#cccccc">
     </div>
 
     <div contenteditable="true" id="editor">Select a part of this text!</div>

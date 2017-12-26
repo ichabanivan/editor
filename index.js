@@ -1,54 +1,93 @@
-var bold = document.getElementById('bold'),
-    italic = document.getElementById('italic'),
-    underline = document.getElementById('underline'),
-    fontSize = document.getElementById('fontSize'),
-    editor = document.getElementById('editor'),
-    color = document.getElementById('color'),
-    get = document.getElementById('get');
 
-bold.addEventListener('click', function() {
-    document.execCommand ('bold', false, null);
- })
- 
-italic.addEventListener('click', function() {
-  document.execCommand ('italic', false, null);
-})
+function Editor() {
+  this.bold = document.getElementById('bold'),
+  this.italic = document.getElementById('italic'),
+  this.underline = document.getElementById('underline'),
+  this.fontSize = document.getElementById('fontSize'),
+  this.editor = document.getElementById('editor'),
+  this.color = document.getElementById('color'),
+  this.get = document.getElementById('get');
+  this.clickEvents();
+  this.changeEvents();
+  this.shiftEnter();
+}
 
-underline.addEventListener('click', function() {
-  document.execCommand ('underline', false, null);
-})
+Editor.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
+  aShowDefaultUI = aShowDefaultUI || false;
+  aValueArgument = aValueArgument || null;
+  document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
+}
 
-fontSize.addEventListener('input', function (e) {
-  document.execCommand('fontSize', false, e.target.value);
-  console.log(e.target.value)
+Editor.prototype.reset = function () {
   fontSize.value = 0;
-})
-
-color.addEventListener('change', function (e) {
-  document.execCommand('foreColor', false, e.target.value);
   color.value = '#000000';
-})
- 
-editor.addEventListener('keydown', function(e) {
+}
+
+Editor.prototype.clickEvents = function () {
+  var that = this;
+
+  document.addEventListener('click', function (e) {
+    var command = e.target.dataset.command;
+    var elem = e.target.dataset.elem;
+    if (e.target.classList.contains('heading')) {
+      that.setCommand(command, '<' + elem + '>');
+    } else if (e.target.classList.contains('btn')) {
+      that.setCommand(command)
+    } 
+  })
+}
+
+Editor.prototype.changeEvents = function () {
+  var that = this;
+
+  document.addEventListener('change', function (e) {
+    var command = e.target.dataset.command;
+    var elem = e.target.dataset.elem;
+
+    if (e.target.classList.contains('select')) {
+      that.setCommand(command, e.target.value);
+      console.log(e.target.value)
+    } else if (e.target.classList.contains('input')) {
+      that.setCommand(command)
+    } 
+  })
+}
+
+Editor.prototype.changeEvents = function () {
+  var that = this;
+
+  document.addEventListener('change', function (e) {
+    var command = e.target.dataset.command;
+    var elem = e.target.dataset.elem;
+
+    if (e.target.classList.contains('select')) {
+      that.setCommand(command, e.target.value);
+    } else if (e.target.classList.contains('input')) {
+      that.setCommand(command, e.target.value)
+    } 
+
+    that.reset();
+  })
+}
+
+Editor.prototype.shiftEnter = function () {
+  var that = this;
+
+  document.addEventListener('keydown', function (e) {
   e = e || window.event;
-  if (e.shiftKey && e.keyCode == 13) {
-    console.log('shift + enter')
-    document.execCommand('formatBlock', false, '<p>'); 
-  }
-})
+    if (e.shiftKey && e.keyCode == 13) {
+      console.log('shift + enter')
+      that.execCommand('formatBlock', false, '<p>'); 
+    }
+  })
+}
 
-get.addEventListener('click', function (e) {
-  console.log(editor.innerHTML)
-  console.log(editor.innerText)
+Editor.prototype.getHtml = function () {
+  return this.editor.innerHTML
+}
 
-  text.innerHTML = editor.innerHTML;
-  formatText.innerHTML = editor.innerText;
-})
+Editor.prototype.getText = function () {
+  return this.editor.innerText
+}
 
-
-document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('heading')) {
-    var data = e.target.dataset.elem;
-    document.execCommand ('formatBlock', false, '<'+data+'>');
-  }
-})
+editor = new Editor()
