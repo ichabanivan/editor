@@ -32,7 +32,7 @@ p {
     margin: 0;
 }
   
-#editor {
+.editor {
     resize:vertical;
     overflow:auto;
     border:1px solid silver;

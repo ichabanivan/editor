@@ -1,10 +1,10 @@
 
-function Editor() {
+function Editor(id) {
+  this.editor = document.getElementById(id),
   this.bold = document.getElementById('bold'),
   this.italic = document.getElementById('italic'),
   this.underline = document.getElementById('underline'),
   this.fontSize = document.getElementById('fontSize'),
-  this.editor = document.getElementById('editor'),
   this.color = document.getElementById('color'),
   this.get = document.getElementById('get');
   this.clickEvents();
@@ -67,7 +67,6 @@ Editor.prototype.changeEvents = function () {
     var elem = e.target.dataset.elem;
 
     if (e.target.classList.contains('select')) { // FontSize
-      console.log(command, e.target.value)
       that.setCommand(command, e.target.value);
     } else if (e.target.classList.contains('input')) {
       that.setCommand(command, e.target.value)
@@ -83,7 +82,6 @@ Editor.prototype.shiftEnter = function () {
   document.addEventListener('keydown', function (e) {
   e = e || window.event;
     if (e.shiftKey && e.keyCode == 13) {
-      console.log('shift + enter')
       that.execCommand('formatBlock', false, '<p>'); 
     }
   })
@@ -97,4 +95,5 @@ Editor.prototype.getText = function () {
   return this.editor.innerText
 }
 
-editor = new Editor()
+editor = new Editor('editor')
+
