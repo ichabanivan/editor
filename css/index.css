@@ -1,69 +1,69 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 * {
-    box-sizing: border-box
+  box-sizing: border-box
 }
 
 #bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 #underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
   
 .editor {
-    resize:vertical;
-    overflow:auto;
-    border:1px solid silver;
-    border-radius:5px;
-    min-height:100px;
-    box-shadow: inset 0 0 10px silver;
-    padding:1em;
-    width: 80%;
-    margin: 20px auto;
+  resize:vertical;
+  overflow:auto;
+  border:1px solid silver;
+  border-radius:5px;
+  min-height:100px;
+  box-shadow: inset 0 0 10px silver;
+  padding:1em;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .options {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 .btn, .select, .input {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 .result {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
 }
 
 #get {
-    display: block;
-    margin: 5px;
-    margin-left: auto;
+  display: block;
+  margin: 5px;
+  margin-left: auto;
 }
 
 #result, 
 #save {
-    width: 80%;
-    margin: 20px auto;
-    display: flex;
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
 }
 
 #save a {
-    margin-left: auto;
+  margin-left: auto;
 }
