@@ -23,8 +23,4 @@ Editor.prototype.initListener = function () {
   event.on('formatBlock', function (data) {
     event.emit('formatBlockInField', data)
   })
-
-  // event.on('changeTextInField', function (data) {
-  //   event.emit('changeTextInField', data)
-  // })
 }
