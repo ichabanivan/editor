@@ -10,18 +10,36 @@ Text.prototype.inputText = function () {
 
   var changeText = new Event("changeText");
 
-  this.textField.addEventListener('input', function (e) {
-    
+  var prevKeyCode = null;
+
+  document.addEventListener('keydown', function (e) {
+    if (prevKeyCode) {
+      document.dispatchEvent(p);
+    }
+
+    if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
+      prevKeyCode = 13;
+    } else {
+      prevKeyCode = null;
+    }
+
+    if (that.textField.innerHTML.length === 0) {
+      document.dispatchEvent(p);
+    }
+  })
+
+  that.textField.addEventListener('input', function (e) {
     changeText.detail = {
         html: that.textField.innerHTML
+    }
+
+    if (!that.textField.innerHTML) {
+      document.dispatchEvent(p);
     }
 
     document.dispatchEvent(changeText);
   })
 
-  document.addEventListener('keydown', function (e) {
-    document.dispatchEvent(p);
-  })
 }
 
 Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {

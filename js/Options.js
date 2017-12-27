@@ -46,34 +46,16 @@ Options.prototype.changeEvents = function () {
     var value = e.target.value;
 
     if (e.target.classList.contains('select') && value === "h1") {
-      h1.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h1);
     } else if (e.target.classList.contains('select') && value === "h2") {
-      h2.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h2);
     } else if (e.target.classList.contains('select') && value === "h3") {
-      h3.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h3);
     } else if (e.target.classList.contains('select') && value === "h4") {
-      h4.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h4);
     } else if (e.target.classList.contains('select') && value === "h5") {
-      h5.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h5);
     } else if (e.target.classList.contains('select') && value === "h6") {
-      h6.detail = {
-          selectedText: window.getSelection().toString()
-      }
       document.dispatchEvent(h6);
     }
 
