@@ -1,3 +1,4 @@
+const event = new EventEmitter()
 new Editor();
 new Text('editor');
 new Options();

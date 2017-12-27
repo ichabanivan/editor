@@ -3,37 +3,28 @@ function Editor() {
 }
 
 Editor.prototype.initListener = function () {
-  document.addEventListener('p', function (e) {
-    // console.log(e.detail)
+  event.on('bold', function (data) {
+    event.emit('boldText', data)
   })
 
-  document.addEventListener('bold', function (e) {
-    console.log(e.detail)
+  event.on('italic', function (data) {
+    event.emit('italicText', data)
   })
 
-  document.addEventListener('italic', function (e) {
-    console.log(e.detail)
+  event.on('underline', function (data) {
+    event.emit('underlineText', data)
   })
 
-  document.addEventListener('underline', function (e) {
-    console.log(e.detail)
+  event.on('changeText', function (data) {
+    event.emit('changeTextDownload', data)
+    event.emit('changeTextInField', data)
   })
 
-  document.addEventListener('h1', function (e) {
+  event.on('formatBlock', function (data) {
+    event.emit('formatBlockInField', data)
   })
 
-  document.addEventListener('h2', function (e) {
-  })
-
-  document.addEventListener('h3', function (e) {
-  })
-
-  document.addEventListener('h4', function (e) {
-  })
-
-  document.addEventListener('h5', function (e) {
-  })
-
-  document.addEventListener('h6', function (e) {
-  })
+  // event.on('changeTextInField', function (data) {
+  //   event.emit('changeTextInField', data)
+  // })
 }

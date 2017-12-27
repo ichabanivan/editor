@@ -6,15 +6,17 @@ function Text(id) {
 
 Text.prototype.inputText = function () {
   var that = this;
-  var p = new Event("p");
-
-  var changeText = new Event("changeText");
 
   var prevKeyCode = null;
 
-  document.addEventListener('keydown', function (e) {
+  var data = {
+    elem: 'p',
+    data: that.textField.innerHTML
+  }
+
+  this.textField.addEventListener('keydown', function (e) {
     if (prevKeyCode) {
-      document.dispatchEvent(p);
+      event.emit('formatBlock', data)
     }
 
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
@@ -24,22 +26,17 @@ Text.prototype.inputText = function () {
     }
 
     if (that.textField.innerHTML.length === 0) {
-      document.dispatchEvent(p);
+      event.emit('formatBlock', data)
     }
   })
 
   that.textField.addEventListener('input', function (e) {
-    changeText.detail = {
-        html: that.textField.innerHTML
+    var data = {
+      html: that.textField.innerHTML
     }
 
-    if (!that.textField.innerHTML) {
-      document.dispatchEvent(p);
-    }
-
-    document.dispatchEvent(changeText);
+    event.emit('changeText', data)
   })
-
 }
 
 Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
@@ -51,44 +48,19 @@ Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefault
 Text.prototype.initListener = function () {
   var that = this;
 
-  document.addEventListener('p', function (e) {
-    that.setCommand('formatBlock', '<p>')
-  })
-
-  document.addEventListener('bold', function (e) {
+  event.on('boldText', function () {
     that.setCommand('bold')
-    console.log(1)
   })
 
-  document.addEventListener('italic', function (e) {
+  event.on('italicText', function () {
     that.setCommand('italic')
   })
 
-  document.addEventListener('underline', function (e) {
+  event.on('underlineText', function () {
     that.setCommand('underline')
   })
 
-  document.addEventListener('h1', function (e) {
-    that.setCommand('formatBlock', 'h1')
-  })
-
-  document.addEventListener('h2', function (e) {
-    that.setCommand('formatBlock', 'h2')
-  })
-
-  document.addEventListener('h3', function (e) {
-    that.setCommand('formatBlock', 'h3')
-  })
-
-  document.addEventListener('h4', function (e) {
-    that.setCommand('formatBlock', 'h4')
-  })
-
-  document.addEventListener('h5', function (e) {
-    that.setCommand('formatBlock', 'h5')
-  })
-
-  document.addEventListener('h6', function (e) {
-    that.setCommand('formatBlock', 'h6')
+  event.on('formatBlockInField', function (e) {
+    that.setCommand('formatBlock', '<' + e.elem + '>')
   })
 }
