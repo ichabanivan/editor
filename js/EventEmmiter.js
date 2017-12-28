@@ -7,10 +7,13 @@ EventEmitter.prototype.on = function (type, listener) {
   if ('function' !== typeof listener) {
     throw new TypeError('listener must be a function');
   }
+
   if (!this._listeners.hasOwnProperty(type)) {
     this._listeners[type] = [];
   }
+
   this._listeners[type].push(listener);
+  
   return this;
 }
 
@@ -18,7 +21,7 @@ EventEmitter.prototype.on = function (type, listener) {
 EventEmitter.prototype.off = function (type, listener) {
   if (!arguments.length) {
     this._listeners = {};
-  } else if (1 === arguments.length) {
+  } else if (arguments.length === 1) {
     if (this._listeners.hasOwnProperty(type)) {
       delete this._listeners[type];
     }

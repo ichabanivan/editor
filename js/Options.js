@@ -13,7 +13,7 @@ Options.prototype.clickEvents = function () {
         selectedText: window.getSelection().toString()
       }
 
-      event.emit(data.command, data)
+      event.emit('setCommand', data)
     }
   })
 }

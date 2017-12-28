@@ -3,7 +3,7 @@ function Text(id) {
   this.initListener()
   this.inputText()
 }
-
+  
 Text.prototype.inputText = function () {
   var that = this;
 
@@ -48,19 +48,11 @@ Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefault
 Text.prototype.initListener = function () {
   var that = this;
 
-  event.on('boldText', function () {
-    that.setCommand('bold')
+  event.on('setCommandMain', function (data) {
+    that.setCommand(data.command)
   })
 
-  event.on('italicText', function () {
-    that.setCommand('italic')
-  })
-
-  event.on('underlineText', function () {
-    that.setCommand('underline')
-  })
-
-  event.on('formatBlockInField', function (e) {
-    that.setCommand('formatBlock', '<' + e.elem + '>')
+  event.on('formatBlockInField', function (data) {
+    that.setCommand('formatBlock', '<' + data.elem + '>')
   })
 }

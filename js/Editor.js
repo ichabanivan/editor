@@ -3,16 +3,8 @@ function Editor() {
 }
 
 Editor.prototype.initListener = function () {
-  event.on('bold', function (data) {
-    event.emit('boldText', data)
-  })
-
-  event.on('italic', function (data) {
-    event.emit('italicText', data)
-  })
-
-  event.on('underline', function (data) {
-    event.emit('underlineText', data)
+  event.on('setCommand', function (data) {
+    event.emit('setCommandMain', data)
   })
 
   event.on('changeText', function (data) {
