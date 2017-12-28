@@ -12,6 +12,14 @@ Editor.prototype.initListener = function () {
   event.on('formatBlock', function (data) {
     that.setCommand('formatBlock', '<' + data.elem + '>')
   })
+
+  event.on('changeText', function (e) {
+    event.emit('changeTextDownload', e)
+  })
+
+  event.on('changeText', function (e) {
+    event.emit('changeTextArea', e)
+  })
 }
 
 Editor.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
