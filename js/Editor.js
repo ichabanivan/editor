@@ -6,10 +6,16 @@ Editor.prototype.initListener = function () {
   var that = this;
 
   event.on('setCommand', function (data) {
-    text.setCommand(data.command)
+    that.setCommand(data.command)
   })
 
   event.on('formatBlock', function (data) {
-    text.setCommand('formatBlock', '<' + data.elem + '>')
+    that.setCommand('formatBlock', '<' + data.elem + '>')
   })
+}
+
+Editor.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
+  aShowDefaultUI = aShowDefaultUI || false;
+  aValueArgument = aValueArgument || null;
+  document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
 }
