@@ -1,7 +1,12 @@
 function View(id) {
-  this._elem = document.getElementById(id)
+  this.elem = document.getElementById(id)
+  this.changeEvent();
 }
 
-View.prototype.changeEvent = function (e) {
-  this._elem.innerText = e.html
+View.prototype.changeEvent = function () {
+  var that = this;
+
+  event.on('changeText', function (e) {
+    that.elem.innerText = e.html
+  })
 }

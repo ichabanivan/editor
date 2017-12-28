@@ -1,5 +1,5 @@
 function Text(id) {
-  this._textField = document.getElementById(id)
+  this.textField = document.getElementById(id)
   this.inputText()
 }
   
@@ -10,10 +10,10 @@ Text.prototype.inputText = function () {
 
   var data = {
     elem: 'p',
-    data: that._textField.innerHTML
+    data: that.textField.innerHTML
   }
 
-  this._textField.addEventListener('keydown', function (e) {
+  this.textField.addEventListener('keydown', function (e) {
     if (prevKeyCode) {
       event.emit('formatBlock', data)
     }
@@ -24,14 +24,14 @@ Text.prototype.inputText = function () {
       prevKeyCode = null;
     }
 
-    if (that._textField.innerHTML.length === 0) {
+    if (that.textField.innerHTML.length === 0) {
       event.emit('formatBlock', data)
     }
   })
 
-  that._textField.addEventListener('input', function (e) {
+  that.textField.addEventListener('input', function (e) {
     var data = {
-      html: that._textField.innerHTML
+      html: that.textField.innerHTML
     }
 
     event.emit('changeText', data)
