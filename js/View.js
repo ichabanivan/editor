@@ -6,7 +6,7 @@ function View(id) {
 View.prototype.changeEvent = function () {
   var that = this;
 
-  event.on('changeTextInField', function (e) {
+  event.on('changeText', function (e) {
     that.elem.innerText = e.html
   })
 }

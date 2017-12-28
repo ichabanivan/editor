@@ -11,7 +11,7 @@ Download.prototype.addBtn = function () {
 Download.prototype.download = function () {
   var that = this;
 
-  event.on('changeTextDownload', function (e) {
+  event.on('changeText', function (e) {
     that.containerForButton.innerHTML = '<a href="data:text/plain;charset=utf-8,%EF%BB%BF' + encodeURIComponent(e.html) + '" download="text.html">text.html</a>';
   })
 }

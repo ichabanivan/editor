@@ -1,6 +1,5 @@
 function Text(id) {
   this.textField = document.getElementById(id)
-  this.initListener()
   this.inputText()
 }
   
@@ -36,23 +35,5 @@ Text.prototype.inputText = function () {
     }
 
     event.emit('changeText', data)
-  })
-}
-
-Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
-  aShowDefaultUI = aShowDefaultUI || false;
-  aValueArgument = aValueArgument || null;
-  document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
-}
-
-Text.prototype.initListener = function () {
-  var that = this;
-
-  event.on('setCommandMain', function (data) {
-    that.setCommand(data.command)
-  })
-
-  event.on('formatBlockInField', function (data) {
-    that.setCommand('formatBlock', '<' + data.elem + '>')
   })
 }
