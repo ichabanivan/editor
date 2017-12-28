@@ -37,3 +37,9 @@ Text.prototype.inputText = function () {
     event.emit('changeText', data)
   })
 }
+
+Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
+  aShowDefaultUI = aShowDefaultUI || false;
+  aValueArgument = aValueArgument || null;
+  document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
+}

@@ -28,15 +28,18 @@ EventEmitter.prototype.off = function (type, listener) {
   } else if (this._listeners.hasOwnProperty(type)) {
     const listeners = this._listeners[type];
     let i = listeners.length;
+
     while (i--) {
       if (listener === listeners[i]) {
         listeners.splice(i, 1);
       }
     }
+    
     if (!listeners.length) {
       delete this._listeners[type];
     }
   }
+
   return this;
 }
 
