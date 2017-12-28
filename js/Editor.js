@@ -12,4 +12,9 @@ Editor.prototype.initListener = function () {
   event.on('formatBlock', function (data) {
     text.setCommand('formatBlock', '<' + data.elem + '>')
   })
+
+  event.on('changeText', function (e) {
+    download.download(e)
+    view.changeEvent(e)
+  })
 }
