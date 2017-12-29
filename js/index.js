@@ -1,5 +1,5 @@
 const event = new EventEmitter()
-new Text('editor');
+var text = new Text('editor');
 new Options();
 new View('result');
 new Download('save');
