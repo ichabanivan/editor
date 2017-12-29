@@ -15,9 +15,6 @@ Editor.prototype.initListener = function () {
 
   event.on('changeText', function (e) {
     event.emit('changeTextDownload', e)
-  })
-
-  event.on('changeText', function (e) {
     event.emit('changeTextArea', e)
   })
 }
