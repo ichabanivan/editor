@@ -1,8 +1,8 @@
-function Editor() {
+function App() {
   this.initListener()
 }
 
-Editor.prototype.initListener = function () {
+App.prototype.initListener = function () {
   var that = this;
 
   event.on('setCommand', function (data) {
