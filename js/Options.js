@@ -12,8 +12,7 @@ Options.prototype.clickEvents = function () {
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn')) {
       var data = {
-        command: e.target.dataset.command,
-        selectedText: window.getSelection().toString()
+        command: e.target.dataset.command
       }
 
       that.emit('setCommand', data)

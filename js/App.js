@@ -13,6 +13,7 @@ App.prototype.initListener = function () {
   var that = this;
 
   this.on('setCommand', function (data) {
+    console.log('setCommand')
     that.text.setCommand(data.command)
   })
 
@@ -30,7 +31,7 @@ App.prototype.emit = function (type) {
   const onfunc = 'on' + type;
 
   var len = arguments.length,
-    args = Array(len > 1 ? len - 1 : 0)
+      args = Array(len > 1 ? len - 1 : 0)
 
   for (var i = 1; i < len; i++) {
     args[i - 1] = arguments[i];

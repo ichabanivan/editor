@@ -17,11 +17,13 @@ TextArea.prototype.inputText = function () {
   }
 
   this.textField.addEventListener('keydown', function (e) {
-    if (prevKeyCode) {
-      that.emit('formatBlock', data)
-    } else if (that.textField.innerHTML.length === 0) {
+    if (that.textField.innerHTML.length === 0) {
       that.emit('formatBlock', data)
     }
+    
+    if (prevKeyCode) {
+      that.emit('formatBlock', data)
+    } 
 
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
       prevKeyCode = 13;
