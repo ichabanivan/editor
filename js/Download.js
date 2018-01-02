@@ -1,5 +1,4 @@
 function Download(id) {
-  console.log(this)
   this.containerForButton = document.getElementById(id);
   this.addBtn()
   this.download()
