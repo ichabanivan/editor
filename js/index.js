@@ -1,4 +1,4 @@
-var app = new App({
+new App({
   editor: 'editor',
   result: 'result',
   save: 'save'

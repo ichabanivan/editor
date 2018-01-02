@@ -3,6 +3,7 @@ function App(data) {
   this.options = new Options();
   this.view = new View(data.result);
   this.download = new Download(data.save);
+
   this.initListener()
 }
 
@@ -20,19 +21,19 @@ App.prototype.initListener = function () {
   })
 
   this.on('changeText', function (e) {
-    that.emit('changeTextDownload', e)
-    that.emit('changeTextArea', e)
+    that.download.download(e)
+    that.view.changeText(e)
   })
 }
 
 App.prototype.emit = function (type) {
   const onfunc = 'on' + type;
 
-  var _len = arguments.length,
-    args = Array(_len > 1 ? _len - 1 : 0)
+  var len = arguments.length,
+    args = Array(len > 1 ? len - 1 : 0)
 
-  for (var _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
+  for (var i = 1; i < len; i++) {
+    args[i - 1] = arguments[i];
   }
 
   if (this.hasOwnProperty(onfunc) && 'function' === typeof this[onfunc]) {

@@ -20,8 +20,8 @@ body {
 }
   
 .editor {
-  resize:vertical;
-  overflow:auto;
+  overflow-y: auto;
+  height: 300px;
   border:1px solid silver;
   border-radius:5px;
   min-height:100px;
