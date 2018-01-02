@@ -13,10 +13,6 @@ Editor.prototype.initListener = function () {
     text.setCommand('formatBlock', '<' + data.elem + '>')
   })
 
-  event.on('formatBlock', function (data) {
-    text.setCommand('formatBlock', '<' + data.elem + '>')
-  })
-
   event.on('changeText', function (e) {
     event.emit('changeTextDownload', e)
     event.emit('changeTextArea', e)
