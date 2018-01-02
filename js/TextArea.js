@@ -1,9 +1,12 @@
-function Text(id) {
+function TextArea(id) {
   this.textField = document.getElementById(id)
   this.inputText()
 }
 
-Text.prototype.inputText = function () {
+TextArea.prototype = Object.create(App.prototype);
+TextArea.prototype.constructor = TextArea;
+
+TextArea.prototype.inputText = function () {
   var that = this;
 
   var prevKeyCode = null;
@@ -15,17 +18,15 @@ Text.prototype.inputText = function () {
 
   this.textField.addEventListener('keydown', function (e) {
     if (prevKeyCode) {
-      event.emit('formatBlock', data)
+      that.emit('formatBlock', data)
+    } else if (that.textField.innerHTML.length === 0) {
+      that.emit('formatBlock', data)
     }
 
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
       prevKeyCode = 13;
     } else {
       prevKeyCode = null;
-    }
-
-    if (that.textField.innerHTML.length === 0) {
-      event.emit('formatBlock', data)
     }
   })
 
@@ -34,11 +35,11 @@ Text.prototype.inputText = function () {
       html: that.textField.innerHTML
     }
 
-    event.emit('changeText', data)
+    that.emit('changeText', data)
   })
 }
 
-Text.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
+TextArea.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
   aShowDefaultUI = aShowDefaultUI || false;
   aValueArgument = aValueArgument || null;
   document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);

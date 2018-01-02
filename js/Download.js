@@ -1,8 +1,12 @@
 function Download(id) {
+  console.log(this)
   this.containerForButton = document.getElementById(id);
   this.addBtn()
   this.download()
 }
+
+Download.prototype = Object.create(TextArea.prototype);
+Download.prototype.constructor = Download;
 
 Download.prototype.addBtn = function () {
   this.containerForButton.innerHTML = '<a href="data:text/plain;charset=utf-8,%EF%BB%BF' + encodeURIComponent('') + '" download="text.html">text.html</a>';
@@ -11,7 +15,7 @@ Download.prototype.addBtn = function () {
 Download.prototype.download = function () {
   var that = this;
 
-  event.on('changeTextDownload', function (e) {
+  this.on('changeTextDownload', function (e) {
     that.containerForButton.innerHTML = '<a href="data:text/plain;charset=utf-8,%EF%BB%BF' + encodeURIComponent(e.html) + '" download="text.html">text.html</a>';
   })
 }

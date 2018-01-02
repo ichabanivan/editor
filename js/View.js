@@ -1,12 +1,16 @@
 function View(id) {
   this.elem = document.getElementById(id)
   this.changeEvent();
+  console.log(this)
 }
+
+View.prototype = Object.create(TextArea.prototype);
+View.prototype.constructor = View;
 
 View.prototype.changeEvent = function () {
   var that = this;
-
-  event.on('changeTextArea', function (e) {
+console.log(this)
+  this.on('changeTextArea', function (e) {
     that.elem.innerText = e.html
   })
 }

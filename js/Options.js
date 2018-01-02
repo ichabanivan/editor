@@ -3,6 +3,9 @@ function Options() {
   this.changeEvents()
 }
 
+Options.prototype = Object.create(App.prototype);
+Options.prototype.constructor = Options;
+
 Options.prototype.clickEvents = function () {
   var that = this;
 
@@ -13,7 +16,7 @@ Options.prototype.clickEvents = function () {
         selectedText: window.getSelection().toString()
       }
 
-      event.emit('setCommand', data)
+      that.emit('setCommand', data)
     }
   })
 }
@@ -29,7 +32,7 @@ Options.prototype.changeEvents = function () {
         elem: e.target.value
       }
 
-      event.emit(command, data)
+      that.emit(command, data)
 
       // Reset
       e.target.value = 0;
