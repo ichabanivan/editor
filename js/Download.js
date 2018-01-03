@@ -12,6 +12,7 @@ Download.prototype.addBtn = function () {
 
   var btnContainer = document.getElementById('save')
   
+  // Emit a bold event on click download button
   btnContainer.addEventListener('click', function (e) {
     if (e.target.id === 'downloadBtn') {
       var data = {

@@ -1,8 +1,6 @@
-function EventEmmiter () {
-    
-}
+function EventEmmiter () {}
 
-EventEmmiter.prototype._listeners = new Object()
+EventEmmiter.prototype._listeners = new Object();
 
 EventEmmiter.prototype.emit = function (type) {
     const onfunc = 'on' + type;

@@ -1,5 +1,4 @@
 function App(data) {
-  
   this.initListener()
 }
 

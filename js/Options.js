@@ -12,7 +12,7 @@ Options.prototype.clickEvents = function () {
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn')) {
       var data = {
-        command: e.target.dataset.command
+        command: e.target.dataset.command // bold, italic, underline
       }
 
       that.emit('setCommand', data)
@@ -23,18 +23,14 @@ Options.prototype.clickEvents = function () {
 Options.prototype.changeEvents = function () {
   var that = this;
 
-  document.addEventListener('change', function (e) {
-    if (e.target.classList.contains('select')) {
-      var command = e.target.dataset.command;
-
-      var data = {
-        elem: e.target.value
-      }
-
-      that.emit(command, data)
-
-      // Reset
-      e.target.value = 0;
+  heading.addEventListener('change', function (e) {
+    var data = {
+      elem: e.target.value // h1 - h6
     }
+
+    that.emit('formatBlock', data)
+
+    // Reset
+    e.target.value = 0;
   })   
 }

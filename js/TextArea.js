@@ -12,19 +12,20 @@ TextArea.prototype.inputText = function () {
   var prevKeyCode = null;
 
   var data = {
-    elem: 'p',
-    data: that.textField.innerHTML
+    elem: 'p'
   }
 
   this.textField.addEventListener('keydown', function (e) {
+    // The first line will wrap in paragraph (By default: no wrap)
     if (that.textField.innerHTML.length === 0) {
       that.emit('formatBlock', data)
     }
     
-    if (prevKeyCode) {
+    // Wrap in a paragraph instead of a div when you press any key after the enter
+    if (prevKeyCode) { 
       that.emit('formatBlock', data)
     } 
-
+    
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
       prevKeyCode = 13;
     } else {
