@@ -51,12 +51,6 @@ body {
   margin: 20px auto;
 }
 
-#get {
-  display: block;
-  margin: 5px;
-  margin-left: auto;
-}
-
 #result, 
 #save {
   width: 80%;

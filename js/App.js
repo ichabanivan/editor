@@ -21,5 +21,3 @@ App.prototype.initListener = function () {
     view.changeText(e)
   })
 }
-
-
