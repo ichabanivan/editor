@@ -25,7 +25,7 @@ Options.prototype.changeEvents = function () {
 
   heading.addEventListener('change', function (e) {
     var data = {
-      elem: e.target.value // h1 - h6
+      elem: e.target.value // h1-h6
     }
 
     that.emit('formatBlock', data)

@@ -16,7 +16,7 @@ TextArea.prototype.inputText = function () {
   }
 
   this.textField.addEventListener('keydown', function (e) {
-    // The first line will wrap in paragraph (By default: no wrap)
+    // The first line will wrap in paragraph (default: no wrap)
     if (that.textField.innerHTML.length === 0) {
       that.emit('formatBlock', data)
     }

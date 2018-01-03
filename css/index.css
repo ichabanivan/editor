@@ -39,7 +39,7 @@ body {
   margin: 20px 0;
 }
 
-.btn, .select, .input {
+.btn, select {
   margin: 0 5px;
 }
 
