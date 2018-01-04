@@ -1,10 +1,7 @@
 function Download() {
+  this.eventEmmiter = new EventEmmiter();
   this.containerForButton = document.getElementById('save');
   this.addBtn()
-}
-
-for (var key in eventMixin) {
-  Download.prototype[key] = eventMixin[key];
 }
 
 Download.prototype.addBtn = function () {
@@ -15,7 +12,7 @@ Download.prototype.addBtn = function () {
   // Emit a bold event on click download button
   this.containerForButton.addEventListener('click', function (e) {
     if (e.target.id === 'downloadBtn') {
-      that.emit('bold')
+      that.eventEmmiter.emit('bold')
     }
   })
 }

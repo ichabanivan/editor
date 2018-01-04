@@ -1,37 +1,40 @@
-var eventMixin = {
-  
-  on: function (eventName, handler) {
-    if (!this._eventHandlers) this._eventHandlers = {};
-    
-    if (!this._eventHandlers[eventName]) {
-      this._eventHandlers[eventName] = [];
-    }
-    
-    this._eventHandlers[eventName].push(handler);
-  },
+function EventEmmiter () {
+  this._listeners = new Object();
+}
 
-  off: function (eventName, handler) {
-    var handlers = this._eventHandlers && this._eventHandlers[eventName];
-    
-    if (!handlers) return;
+EventEmmiter.prototype.emit = function (type) {
+    const onfunc = 'on' + type;
 
-    for (var i = 0; i < handlers.length; i++) {
-      if (handlers[i] == handler) {
-        handlers.splice(i--, 1);
-      }
-    }
-  },
+    var len = arguments.length,
+        args = Array(len > 1 ? len - 1 : 0)
 
-  emit: function (eventName) {
-
-    if (!this._eventHandlers || !this._eventHandlers[eventName]) {
-      return;
+    for (var i = 1; i < len; i++) {
+        args[i - 1] = arguments[i];
     }
 
-    var handlers = this._eventHandlers[eventName];
-
-    for (var i = 0; i < handlers.length; i++) {
-      handlers[i].apply(this, [].slice.call(arguments, 1));
+    if (this.hasOwnProperty(onfunc) && 'function' === typeof this[onfunc]) {
+        this[onfunc].apply(this, args);
     }
-  }
-};
+
+    if (this._listeners.hasOwnProperty(type)) {
+        for (const listener of this._listeners[type]) {
+            listener.apply(this, args);
+        }
+    }
+
+    return this;
+}
+
+EventEmmiter.prototype.on = function (type, listener) {
+    if ('function' !== typeof listener) {
+        throw new TypeError('listener must be a function');
+    }
+
+    if (!this._listeners.hasOwnProperty(type)) {
+        this._listeners[type] = [];
+    }
+
+    this._listeners[type].push(listener);
+
+    return this;
+}

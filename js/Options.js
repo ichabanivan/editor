@@ -1,10 +1,7 @@
 function Options() {
+  this.eventEmmiter = new EventEmmiter();
   this.clickEvents()
   this.changeEvents()
-}
-
-for (var key in eventMixin) {
-  Options.prototype[key] = eventMixin[key];
 }
 
 Options.prototype.clickEvents = function () {
@@ -14,7 +11,7 @@ Options.prototype.clickEvents = function () {
     if (e.target.classList.contains('btn')) {
       var command = e.target.dataset.command; // bold, italic, underline
 
-      that.emit(command)
+      that.eventEmmiter.emit(command)
     }
   })
 }
@@ -25,7 +22,7 @@ Options.prototype.changeEvents = function () {
   heading.addEventListener('change', function (e) {
     var heading =  e.target.value; // h1-h6
 
-    that.emit(heading)
+    that.eventEmmiter.emit(heading)
 
     // Reset
     e.target.value = 0;
