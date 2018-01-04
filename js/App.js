@@ -1,37 +1,68 @@
-function App(data) {
+function App() {
   this.options = new Options();
-  this.text = new TextArea(data.editor);
-  this.download = new Download(data.save);
-  this.view = new View(data.result);
+  this.text = new TextArea();
+  this.download = new Download();
+  this.view = new View();
 
   this.init()
-}
-
-for (var key in EventEmmiterMixin) {
-  App.prototype[key] = EventEmmiterMixin[key];
 }
 
 App.prototype.init = function () {
   var that = this;
 
-  // bold, italic, underline
-  this.options.on('setCommand', function (data) {
-    that.text.setCommand(data)
-  })
-
-  // bold - on click download button
-  this.download.on('setCommand', function () {
+  // bold
+  this.options.on('bold', function () {
     that.text.setCommand('bold')
   })
 
+  // italic
+  this.options.on('italic', function () {
+    that.text.setCommand('italic')
+  })
+
+  // underline
+  this.options.on('underline', function () {
+    that.text.setCommand('underline')
+  })
+
   // p
-  this.text.on('formatBlock', function () {
+  this.text.on('p', function () {
     that.text.setCommand('formatBlock', '<p>')
   })
 
-  // h1-h6
-  this.options.on('formatBlock', function (heading) {
-    that.text.setCommand('formatBlock', '<' + heading + '>')
+  // h1
+  this.options.on('h1', function () {
+    that.text.setCommand('formatBlock', '<h1>')
+  })
+
+  // h2
+  this.options.on('h2', function () {
+    that.text.setCommand('formatBlock', '<h2>')
+  })
+
+  // h3
+  this.options.on('h3', function () {
+    that.text.setCommand('formatBlock', '<h3>')
+  })
+
+  // h4
+  this.options.on('h4', function () {
+    that.text.setCommand('formatBlock', '<h4>')
+  })
+
+  // h5
+  this.options.on('h5', function () {
+    that.text.setCommand('formatBlock', '<h5>')
+  })
+
+  // h6
+  this.options.on('h6', function () {
+    that.text.setCommand('formatBlock', '<h6>')
+  })
+
+  // bold - on click download button
+  this.download.on('bold', function () {
+    that.text.setCommand('bold')
   })
 
   // Download and preview

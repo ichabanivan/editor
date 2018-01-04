@@ -3,8 +3,9 @@ function Options() {
   this.changeEvents()
 }
 
-Options.prototype = Object.create(App.prototype);
-Options.prototype.constructor = Options;
+for (var key in eventMixin) {
+  Options.prototype[key] = eventMixin[key];
+}
 
 Options.prototype.clickEvents = function () {
   var that = this;
@@ -12,8 +13,8 @@ Options.prototype.clickEvents = function () {
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn')) {
       var command = e.target.dataset.command; // bold, italic, underline
-      
-      that.emit('setCommand', command)
+
+      that.emit(command)
     }
   })
 }
@@ -24,9 +25,9 @@ Options.prototype.changeEvents = function () {
   heading.addEventListener('change', function (e) {
     var heading =  e.target.value; // h1-h6
 
-    that.emit('formatBlock', heading)
+    that.emit(heading)
 
     // Reset
     e.target.value = 0;
-  })   
+  })
 }

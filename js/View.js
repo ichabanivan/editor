@@ -1,10 +1,7 @@
-function View(id) {
-  this.elem = document.getElementById(id)
+function View() {
+  this.elem = document.getElementById('result')
 }
 
-View.prototype = Object.create(TextArea.prototype);
-View.prototype.constructor = View;
-
-View.prototype.changeText = function (e) {
-  this.elem.innerText = e.html
+View.prototype.changeText = function (html) {
+  this.elem.innerText = html
 }

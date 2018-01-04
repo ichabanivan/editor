@@ -1,10 +1,11 @@
-function TextArea(id) {
-  this.textField = document.getElementById(id);
+function TextArea() {
+  this.textField = document.getElementById('editor');
   this.inputText()
 }
 
-TextArea.prototype = Object.create(App.prototype);
-TextArea.prototype.constructor = TextArea;
+for (var key in eventMixin) {
+  TextArea.prototype[key] = eventMixin[key];
+}
 
 TextArea.prototype.inputText = function () {
   var that = this;
@@ -14,14 +15,14 @@ TextArea.prototype.inputText = function () {
   this.textField.addEventListener('keydown', function (e) {
     // The first sentence will wrap in paragraph (default: no wrap)
     if (that.textField.innerHTML.length === 0) {
-      that.emit('formatBlock')
+      that.emit('p')
     }
-    
+
     // Wrap in a paragraph instead of a div when you press any key after the enter (default: div)
-    if (prevKeyCode) { 
-      that.emit('formatBlock')
-    } 
-    
+    if (prevKeyCode) {
+      that.emit('p')
+    }
+
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
       prevKeyCode = 13;
     } else {
@@ -30,11 +31,8 @@ TextArea.prototype.inputText = function () {
   })
 
   that.textField.addEventListener('input', function (e) {
-    var data = {
-      html: that.textField.innerHTML
-    }
-
-    that.emit('changeText', data)
+    var html = that.textField.innerHTML;
+    that.emit('changeText', html)
   })
 }
 
