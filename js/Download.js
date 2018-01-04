@@ -14,10 +14,7 @@ Download.prototype.addBtn = function () {
   // Emit a bold event on click download button
   this.containerForButton.addEventListener('click', function (e) {
     if (e.target.id === 'downloadBtn') {
-      var data = {
-        command: 'bold'
-      }
-      that.emit('setCommand', data)
+      that.emit('setCommand')
     }   
   })
 }

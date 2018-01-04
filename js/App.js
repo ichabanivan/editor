@@ -3,6 +3,7 @@ function App(data) {
   this.text = new TextArea(data.editor);
   this.download = new Download(data.save);
   this.view = new View(data.result);
+
   this.init()
 }
 
@@ -15,7 +16,12 @@ App.prototype.init = function () {
 
   // bold, italic, underline
   this.options.on('setCommand', function (data) {
-    that.text.setCommand(data.command)
+    that.text.setCommand(data)
+  })
+
+  // bold - on click download button
+  this.download.on('setCommand', function () {
+    that.text.setCommand('bold')
   })
 
   // p

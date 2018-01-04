@@ -11,11 +11,9 @@ Options.prototype.clickEvents = function () {
 
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn')) {
-      var data = {
-        command: e.target.dataset.command // bold, italic, underline
-      }
-
-      that.emit('setCommand', data)
+      var command = e.target.dataset.command; // bold, italic, underline
+      
+      that.emit('setCommand', command)
     }
   })
 }
