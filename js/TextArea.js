@@ -1,5 +1,5 @@
 function TextArea(id) {
-  this.textField = document.getElementById(id)
+  this.textField = document.getElementById(id);
   this.inputText()
 }
 
@@ -11,19 +11,15 @@ TextArea.prototype.inputText = function () {
 
   var prevKeyCode = null;
 
-  var data = {
-    elem: 'p'
-  }
-
   this.textField.addEventListener('keydown', function (e) {
-    // The first line will wrap in paragraph (default: no wrap)
+    // The first sentence will wrap in paragraph (default: no wrap)
     if (that.textField.innerHTML.length === 0) {
-      that.emit('formatBlock', data)
+      that.emit('formatBlock')
     }
     
-    // Wrap in a paragraph instead of a div when you press any key after the enter
+    // Wrap in a paragraph instead of a div when you press any key after the enter (default: div)
     if (prevKeyCode) { 
-      that.emit('formatBlock', data)
+      that.emit('formatBlock')
     } 
     
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {

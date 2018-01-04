@@ -1,23 +1,36 @@
 function App(data) {
-  this.initListener()
+  this.options = new Options();
+  this.text = new TextArea(data.editor);
+  this.download = new Download(data.save);
+  this.view = new View(data.result);
+  this.init()
 }
 
-App.prototype = Object.create(EventEmmiter.prototype);
-App.prototype.constructor = App;
+for (var key in EventEmmiterMixin) {
+  App.prototype[key] = EventEmmiterMixin[key];
+}
 
-App.prototype.initListener = function () {
+App.prototype.init = function () {
+  var that = this;
+
   // bold, italic, underline
-  this.on('setCommand', function (data) {
-    text.setCommand(data.command)
+  this.options.on('setCommand', function (data) {
+    that.text.setCommand(data.command)
   })
 
-  // h1-h6, p
-  this.on('formatBlock', function (data) {
-    text.setCommand('formatBlock', '<' + data.elem + '>')
+  // p
+  this.text.on('formatBlock', function () {
+    that.text.setCommand('formatBlock', '<p>')
   })
 
-  this.on('changeText', function (e) {
-    download.download(e)
-    view.changeText(e)
+  // h1-h6
+  this.options.on('formatBlock', function (heading) {
+    that.text.setCommand('formatBlock', '<' + heading + '>')
+  })
+
+  // Download and preview
+  this.text.on('changeText', function (e) {
+    that.download.download(e)
+    that.view.changeText(e)
   })
 }
