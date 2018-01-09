@@ -1,0 +1,9 @@
+#save {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+}
+
+#save a {
+  margin-left: auto;
+}
