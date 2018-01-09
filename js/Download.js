@@ -18,8 +18,8 @@ Download.prototype.addBtn = function () {
       that.emit('bold')
     }
   })
-}
+};
 
 Download.prototype.download = function (html) {
   this.containerForButton.innerHTML = '<a id="downloadBtn" href="data:text/plain;charset=utf-8,%EF%BB%BF' + encodeURIComponent(html) + '" download="text.html">text.html</a>';
-}
+};

@@ -17,7 +17,7 @@ Options.prototype.clickEvents = function () {
       that.emit(command)
     }
   })
-}
+};
 
 Options.prototype.changeEvents = function () {
   var that = this;
@@ -30,4 +30,4 @@ Options.prototype.changeEvents = function () {
     // Reset
     e.target.value = 0;
   })
-}
+};

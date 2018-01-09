@@ -4,4 +4,4 @@ function View() {
 
 View.prototype.changeText = function (html) {
   this.elem.innerText = html
-}
+};

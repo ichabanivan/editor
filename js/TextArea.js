@@ -28,16 +28,16 @@ TextArea.prototype.inputText = function () {
     } else {
       prevKeyCode = null;
     }
-  })
+  });
 
   that.textField.addEventListener('input', function (e) {
     var html = that.textField.innerHTML;
     that.emit('changeText', html)
   })
-}
+};
 
 TextArea.prototype.setCommand = function (aCommandName, aValueArgument, aShowDefaultUI) {
   aShowDefaultUI = aShowDefaultUI || false;
   aValueArgument = aValueArgument || null;
   document.execCommand(aCommandName, aShowDefaultUI, aValueArgument);
-}
+};
