@@ -38,22 +38,18 @@ class App extends Component {
 
     eventEmmiter.on('underline', () => {
       this.setCommand('underline')
-
     });
 
     eventEmmiter.on('p', () => {
       this.setCommand('formatBlock', '<p>')
-
     });
 
     eventEmmiter.on('h1', () => {
       this.setCommand('formatBlock', '<h1>')
-
     });
 
     eventEmmiter.on('h2', () => {
       this.setCommand('formatBlock', '<h2>')
-
     });
 
     eventEmmiter.on('h3', () => {

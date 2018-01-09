@@ -7,7 +7,7 @@ class EventEmmiter {
     const onfunc = 'on' + type;
 
     let len = arguments.length,
-        args = Array(len > 1 ? len - 1 : 0);
+      args = Array(len > 1 ? len - 1 : 0);
 
     for (let i = 1; i < len; i++) {
       args[i - 1] = arguments[i];
