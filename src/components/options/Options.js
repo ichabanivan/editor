@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
 import './Options.css';
+
 import Button from "../elements/Button";
 import Select from "../elements/Select";
+
 import eventEmmiter from "./../../containers/eventEmmiter";
 
 class Options extends Component {

@@ -9,12 +9,12 @@ class Editor extends Component {
   };
 
   handleInput = (e) => {
-    let value = e.target.innerHTML
+    let value = e.target.innerHTML;
     eventEmmiter.emit('changeText', value)
   };
 
   wrap = (e) => {
-    console.log(e.keyCode)
+    console.log(e.keyCode);
     // The first sentence will wrap in paragraph (default: no wrap)
     if (e.target.innerHTML.length === 0) {
       eventEmmiter.emit('p')

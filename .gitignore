@@ -1,9 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # my
-.csscomb.json
-.eslintrc
-.stylelintrc
 .idea/
 
 # dependencies

@@ -6,10 +6,10 @@ class EventEmmiter {
   emit(type) {
     const onfunc = 'on' + type;
 
-    var len = arguments.length,
-      args = Array(len > 1 ? len - 1 : 0)
+    let len = arguments.length,
+        args = Array(len > 1 ? len - 1 : 0);
 
-    for (var i = 1; i < len; i++) {
+    for (let i = 1; i < len; i++) {
       args[i - 1] = arguments[i];
     }
 

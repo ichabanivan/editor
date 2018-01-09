@@ -10,7 +10,7 @@ const Select = (props) => (
     <option value="h5">h5</option>
     <option value="h6">h6</option>
   </select>
-)
+);
 
 export default Select;
 
