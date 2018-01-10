@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Editor.css';
 
-import eventEmmiter from "./../../containers/eventEmmiter";
-
 class Editor extends Component {
   state = {
     prevKeyCode: null
@@ -10,19 +8,20 @@ class Editor extends Component {
 
   handleInput = (e) => {
     let value = e.target.innerHTML;
-    eventEmmiter.emit('changeText', value)
+    this.props.handleChangeText(value)
   };
 
+  handleWrap = (e) => {
+    console.log(e.keyCode);
 
-  wrap = (e) => {
     // The first sentence will wrap in paragraph (default: no wrap)
     if (e.target.innerHTML.length === 0) {
-      eventEmmiter.emit('p')
+      this.props.handleP()
     }
 
     // Wrap in a paragraph instead of a div when you press any key after the enter (default: div)
     if (this.state.prevKeyCode) {
-      eventEmmiter.emit('p')
+      this.props.handleP()
     }
 
     if (e.keyCode === 13 && document.queryCommandEnabled("formatBlock")) {
@@ -38,7 +37,7 @@ class Editor extends Component {
         onInput={this.handleInput}
         contentEditable="true"
         className="editor"
-        onKeyDown={this.wrap}
+        onKeyDown={this.handleWrap}
       />
     );
   }

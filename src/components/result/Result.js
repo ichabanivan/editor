@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react'
 
 import './Result.css';
 
-class Result extends Component {
-  render() {
-    return (
-      <div id="result">
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const Result = (props) => (
+  <div className="result">
+    { props.children }
+  </div>
+);
 
 export default Result;
