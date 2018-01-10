@@ -13,6 +13,7 @@ class Editor extends Component {
 
   handleWrap = (e) => {
     console.log(e.keyCode);
+
     // The first sentence will wrap in paragraph (default: no wrap)
     if (e.target.innerHTML.length === 0) {
       this.props.handleP()
